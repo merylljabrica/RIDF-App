@@ -807,7 +807,7 @@ with tab1:
                         st.download_button(
                             label="📥 Download Updated HMDAS-14",
                             data=h14_buffer.getvalue(),
-                            file_name=f"HMDAS-14 {station_name} {year_month}.xlsm",
+                            file_name=f"HMDAS-14 {station_val} {year_val}{meta[0]['month']}.xlsm",
                             mime="application/vnd.ms-excel.sheet.macroEnabled.12"
                         )
 
