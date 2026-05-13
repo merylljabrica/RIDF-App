@@ -5,7 +5,6 @@ openpyxl
 xlsxwriter
 tinydb
 xlrd
-copy
 datetime
 zipfile
 calendar
