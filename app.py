@@ -780,7 +780,7 @@ with tab1:
                         validation_rows = []
                         for day_info in valid_days:
                             b1_val = day_info['manual_b1']
-                            is_pass = b1_val > 0.84
+                            is_pass = 0.85 <= b1_val <= 1.5
                             
                             validation_rows.append({
                                 "Date/Sheet": day_info['name'],
