@@ -1,8 +1,7 @@
 streamlit
 pandas
 openpyxl
-xopy
+copy
 datetime
-re
 zipfile
 calendar
