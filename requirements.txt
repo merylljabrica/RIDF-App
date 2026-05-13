@@ -3,8 +3,4 @@ pandas
 matplotlib
 openpyxl
 xlsxwriter
-zipfile
-calendar
-datetime
 xlrd
-copy
