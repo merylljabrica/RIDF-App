@@ -1,7 +1,6 @@
 streamlit
 pandas
+matplotlib
 openpyxl
-copy
-datetime
-zipfile
-calendar
+xlsxwriter
+tinydb
