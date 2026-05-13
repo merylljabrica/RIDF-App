@@ -570,14 +570,14 @@ with tab1:
         
         # --- HMDAS-13 VALIDATION UPLOAD (XLS ONLY) ---
         st.subheader("🔍 HMDAS-13 Validation (Required)")
-        st.info(f"Upload HMDAS-13 file matching: **13_HMDAS-13 6 hrly {station_val} {year_val}**")
+        st.info(f"Upload HMDAS-13 file matching: **HMDAS-13 6 hrly {station_val} {year_val}**")
 
         
         hmdas13_file = st.file_uploader(
             "Upload HMDAS-13 6hrly file",
             type=['xls'],
             accept_multiple_files=False,
-            help="Filename must match: '13_HMDAS-13 6 hrly [STATION] [YYYY]' (.xls)"
+            help="Filename must match: 'HMDAS-13 6 hrly [STATION] [YYYY]' (.xls)"
         )
         
         # Validate HMDAS-13 filename
@@ -586,7 +586,7 @@ with tab1:
             if not hmdas13_file.name.lower().endswith('.xls'):
                 st.error("❌ **File type error!** Only .xls files accepted.")
             else:
-                hmdas13_pattern = rf"13_HMDAS-13 6 hrly {re.escape(station_val)} {year_val}"
+                hmdas13_pattern = rf"HMDAS-13 6 hrly {re.escape(station_val)} {year_val}"
                 if re.match(hmdas13_pattern, hmdas13_file.name):
                     hmdas13_valid = True
                     st.success(f"✅ **Valid HMDAS-13:** {hmdas13_file.name}")
