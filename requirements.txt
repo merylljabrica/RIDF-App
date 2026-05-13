@@ -9,5 +9,4 @@ copy
 datetime
 zipfile
 calendar
-io
-re
+
