@@ -6,3 +6,5 @@ xlsxwriter
 zipfile
 calendar
 datetime
+xlrd
+copy
