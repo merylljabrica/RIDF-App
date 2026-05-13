@@ -570,42 +570,40 @@ with tab1:
         
         # --- HMDAS-13 VALIDATION UPLOAD (XLS ONLY) ---
         st.subheader("🔍 HMDAS-13 Validation (Required)")
-        st.info(f"Upload HMDAS-13 file matching: **HMDAS-13 6 hrly {station_val} {year_val}**")
+        st.info(f"Upload HMDAS-13 file matching: **13_HMDAS-13 6 hrly {station_val} {year_val}**")
 
         
         hmdas13_file = st.file_uploader(
             "Upload HMDAS-13 6hrly file",
             type=['xls'],
             accept_multiple_files=False,
-            help="Filename must match: 'HMDAS-13 6 hrly [STATION] [YYYY]' (.xls)"
+            help="Filename must match: '13_HMDAS-13 6 hrly [STATION] [YYYY]' (.xls)"
         )
         
         # Validate HMDAS-13 filename
         hmdas13_valid = False
-        hmdas13_valid = False
-       if hmdas13_file:
-          if not hmdas13_file.name.lower().endswith('.xls'):
-                 st.error("❌ **File type error!** Only .xls files accepted.")
+        # Validate HMDAS-13 filename
+
+        if hmdas13_file:
+            if not hmdas13_file.name.lower().endswith('.xls'):
+                st.error("❌ **File type error!** Only .xls files accepted.")
             else:
-               # Flexible pattern: checks if the string contains HMDAS-13, the station, and the year
-               # '(?i)' makes the search case-insensitive
-               station_pattern = re.escape(station_val)
-               year_pattern = re.escape(year_val)
-                 
-               # This regex ensures all three elements exist regardless of order or surrounding text
-               is_hmdas13 = "HMDAS-13" in hmdas13_file.name.upper()
-               has_station = re.search(station_pattern, hmdas13_file.name, re.IGNORECASE)
-               has_year = re.search(year_pattern, hmdas13_file.name)
-         
-               if is_hmdas13 and has_station and has_year:
-                  hmdas13_valid = True
-                  st.success(f"✅ **Valid HMDAS-13:** {hmdas13_file.name}")
-               else:
-                  st.error(f"❌ **Invalid filename!** File must contain 'HMDAS-13', '{station_val}', and '{year_val}'")
-                  st.info("Example: '13_HMDAS-13 6 hrly Catarman 2026.xls'")
-        
-        st.info("The cleaned data from Stage 1 is loaded. We will now populate the HMDAS-14 Master Template.")
-        
+                # Flexible pattern: checks if the string contains HMDAS-13, the station, and the year
+                # '(?i)' makes the search case-insensitive
+                station_pattern = re.escape(station_val)
+                year_pattern = re.escape(year_val)
+                
+                # This regex ensures all three elements exist regardless of order or surrounding text
+                is_hmdas13 = "HMDAS-13" in hmdas13_file.name.upper()
+                has_station = re.search(station_pattern, hmdas13_file.name, re.IGNORECASE)
+                has_year = re.search(year_pattern, hmdas13_file.name)
+
+                if is_hmdas13 and has_station and has_year:
+                    hmdas13_valid = True
+                    st.success(f"✅ **Valid HMDAS-13:** {hmdas13_file.name}")
+                else:
+                    st.error(f"❌ **Invalid filename!** File must contain 'HMDAS-13', '{station_val}', and '{year_val}'")
+            
         # Only show Build button if HMDAS-13 is valid
         if hmdas13_valid:
             st.session_state['h14_complete'] = True # Add this
